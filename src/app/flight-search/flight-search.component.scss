@@ -1,0 +1,93 @@
+body {
+  color: white;
+  // position:fixed; 
+  // height:100%; 
+  // width:100%;
+  background-color:rgb(218, 217, 224);
+  margin: 0%;
+  overflow-y: auto
+
+}
+
+section{
+  // background-color: orange;
+  // width: 100%;
+}
+.HeaderSearch{
+  display: inline-flex;
+  background-color: orange; 
+  width: 100%;
+}
+
+.trip_Type,.fromLocation,.toLocation,.fromDate,.toDate,.searchButton{
+
+  width: 100%;
+  
+}
+
+
+#logo{
+  background-color: rgb(31, 31, 73);
+  width: 10%;
+  height: 10%;
+}
+#searchFields{
+  color: white;
+  background-color: rgb(31, 31, 73);
+  width: 90%;
+  display: inline-flex;
+}
+#searchButton{
+  background-color: rgb(167, 14, 14);
+  color: green;
+  // width: 15%;
+  // text-align: center;
+  // background: green;
+  
+}
+button{
+  border-radius: 40px;
+}
+
+////////////////////////////////////////
+.listingCard{
+  padding: 16px 20px;
+  background: rgb(123, 126, 128);
+  border-top: 8px solid #e5eef5;
+  border-radius: 20px;
+  width: 80%;
+  display: inline-flex;
+  justify-content: left;
+  
+  
+}
+.flightData {
+ 
+  align-content: center;
+  padding: 10px;
+  width: 8%;
+  }
+
+span{
+  color: black;
+}
+.Proceed{
+  right: 7%;
+  position: fixed;
+}
+.inbox{
+  background-color: chocolate;
+  height: 40px;
+  width: 100%;
+}
+
+.inbox button{
+  text-align: center;
+  padding: 1%;
+  width: 12%;
+  height: 96%;
+}
+
+.nodataAvailable{
+  color: red
+}

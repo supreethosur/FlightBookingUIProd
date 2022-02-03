@@ -1,0 +1,75 @@
+<body>
+    
+    <button class="addFormbutton" (click)=generateForm()>Add Passangers</button>
+
+
+    <div *ngIf="isFormRequired==1" class="addPassanger" [formGroup]="addPassanger"
+        (submit)="savePassangerDetails(passangerName.value,Age.value,gender.value,mealsType.value,isBusinessClass.value)">
+        <form>
+            <label for="passangerName">Passanger Name</label><br>
+            <input type="text" id="passangerName" #passangerName formControlName="passangerName"><br>
+
+
+            <label for="age">Age</label><br>
+            <input type="text" id="age" #Age formControlName="age"><br>
+
+            <label for="gender">Gender</label><br>
+            <!-- <input type="text" id="gender" #gender formControlName="gender"><br> -->
+            <select id="gender" #gender formControlName="gender">
+                <option *ngFor="let gender of genderType" [value]="gender">
+                    {{gender}}
+                </option>
+            </select><br>
+
+
+            <label for="mealsType">Meals Type</label><br>
+            <!-- <input type="text" id="mealsType" #mealsType formControlName="mealsType"><br> -->
+            <select id="mealsType" #mealsType formControlName="mealsType">
+                <option *ngFor="let meals of MealsType" [value]="meals">
+                    {{meals}}
+                </option>
+            </select><br>
+            <label for="isBusinessClass">Class</label><br>
+            <!-- <input type="text"  id="isBusinessClass" #isBusinessClass formControlName="isBusinessClass"><br> -->
+            <select id="isBusinessClass" #isBusinessClass formControlName="isBusinessClass">
+                <option *ngFor="let class of Classes" [value]="class">
+                    {{class}}
+                </option>
+            </select><br>
+
+            <button [disabled]="addPassanger.invalid"> Add</button>
+
+        </form>
+    </div>
+        <table class="summary"  *ngIf="summaryModel.passangerList!=null && summaryModel.passangerList.length!=0" border="1"  >
+            <tr >
+                <th>S.No.</th>
+                <th>Passanger Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Meals Type</th>
+                <th>Class</th>
+                <th>Amount</th>
+            </tr>
+            <tr *ngFor="let passanger of summaryModel.passangerList;let i=index">
+                <td>{{i+1}}</td>
+                <td>{{passanger.passangerName}}</td>
+                <td>{{passanger.age}}</td>
+                <td>{{passanger.gender}}</td>
+                <td>{{passanger.mealsType}}</td>
+                <td>{{passanger.businessClass}}</td>
+                <td>{{passanger.amount}}</td>
+                <td><button (click)="deleteTicket(passanger.ticketNo) ">Delete</button></td>
+            </tr>
+            
+        </table><br>
+        <div class="finalAmount" *ngIf="summaryModel.passangerList!=null && summaryModel.passangerList.length!=0">
+            <div>Ticket Amount <span>{{amount.totalTicketAmount}}</span></div>
+            <div> Tax Amount <span>{{amount.taxAmount}}</span></div>
+            <div>Service Charges <span>{{amount.serviceCharges}}</span></div>
+            <div>Total Amount <span>{{amount.finalAmount}}</span></div>
+        </div>
+      
+        <button class="finalSubmitButton" (click)="finalSubmission()" [disabled]="summaryModel.passangerList==null"> Submit</button>
+    
+</body>

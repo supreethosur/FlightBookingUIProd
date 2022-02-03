@@ -1,0 +1,125 @@
+<!DOCTYPE html>  
+<body>  
+<!--   
+<link rel="stylesheet"  
+href="https://unpkg.com/purecss@1.0.0/build/pure-min.css"   
+integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w"   
+crossorigin="anonymous">   -->
+
+
+<button class="addFormbutton" (click)=generateForm()>Add New Flight</button>
+
+
+<div *ngIf="isFormRequired==1" class="addFlight" [formGroup]="addFlight" (submit)="addNewFlight(flightName.value,airline.value,'',
+        departureTime.value,'',arrivalTime.value,fromLocation.value,
+        toLocation.value,businessSeats.value,nonBusinessSeats.value,scheduleType.value,amount.value) ">
+    <form class="pure-form pure-form-aligned">
+    <fieldset>  
+        <div class="pure-control-group">
+            <label for="flightName">Flight Name</label><br>
+            <input type="text" id="flightName" #flightName formControlName="flightName"><br>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="airline">Airline</label><br>
+            <input type="text" id="airline" #airline formControlName="airline"><br>
+        </div>
+
+        <!-- <div class="pure-control-group">
+            <label for="departureDate">Departure Date</label><br>
+            <input type="date" id="departureDate" #departureDate formControlName="departureDate"><br>
+        </div> -->
+
+        <div class="pure-control-group">
+            <label for="departureTime">Departure Time</label><br>
+            <input type="time" id="departureTime" #departureTime formControlName="departureTime"><br>
+        </div>
+
+        <!-- <div class="pure-control-group">
+            <label for="arrivalDate">Arrival Date</label><br>
+            <input type="date" id="arrivalDate" #arrivalDate formControlName="arrivalDate"><br>
+        </div> -->
+
+        <div class="pure-control-group">
+            <label for="arrivalTime">Arrival Time</label><br>
+            <input type="time" id="arrivalTime" #arrivalTime formControlName="arrivalTime"><br>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="fromLocation">From Location</label><br>
+            <input type="text" id="fromLocation" #fromLocation formControlName="fromLocation"><br>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="toLocation">to Location</label><br>
+            <input type="text" id="toLocation" #toLocation formControlName="toLocation"><br>
+        </div>
+        <div class="pure-control-group">
+            <label for="scheduleType">Schedule Type</label><br>
+            <select id="scheduleType" #scheduleType formControlName="scheduleType">
+                <option *ngFor="let scheduleType of schedule_Type" [value]="scheduleType">
+                    {{scheduleType}}
+                </option>
+            </select>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="businessSeats">No Of Business Seats</label><br>
+            <input type="text" id="businessSeats" #businessSeats formControlName="businessSeats"><br>
+        </div>
+
+        <div class="pure-control-group">
+            <label for="nonBusinessSeats">No Of Non-Business Seats</label><br>
+            <input type="text" id="nonBusinessSeats" #nonBusinessSeats formControlName="nonBusinessSeats"><br>
+        </div>
+
+        
+
+        <div class="pure-control-group">
+            <label for="amount">amount</label><br>
+            <input type="text" id="amount" #amount formControlName="amount"><br>
+        </div>
+        <div class="pure-control-group">
+            <button [disabled]="addFlight.invalid"> Add</button>
+        </div>
+    </fieldset>  
+    </form>
+</div><br>
+
+
+<form class="searchbar" [formGroup]="searchFlightsForm" (submit)="getFlights(searchbar.value)">
+    
+    <input (keyup)="getFlights(searchbar.value)" placeholder="FlightName" formControlName="searchbar" type="text" id="searchbar" #searchbar />
+    <button> Search Flights</button>
+</form>
+
+<!-- <table class="flightList"  *ngIf="flightsList!=null && flightsList.length!=0" border="1"  > -->
+<table class="flightList"  border="1"  >
+    <tr >
+        <th>S.No.</th>
+        <th>Flight Name</th>
+        <th>Airline</th>
+        <th>From Location </th>
+        <th>To Location </th>
+        <th>Departure Time </th>
+        <th>Arrival Time</th>
+        <th>Schedule Type</th>
+        <th>Amount</th>
+        
+    </tr>
+    <tr *ngFor="let flight of flightsList;let i=index">
+        <td>{{i+1}}</td>
+        <td>{{flight.flightName}}</td>
+        <td>{{flight.airline}}</td>
+        <td>{{flight.fromLocation}}</td>
+        <td>{{flight.toLocation}}</td>
+        <td>{{flight.departureTime}}</td>
+        <td>{{flight.arrivalTime}}</td>
+        <td>{{flight.scheduleType}}</td>
+        <td>{{flight.amount}}</td>
+        <td><button (click)="deleteFlight(flight.flightId) ">Delete</button></td>
+    </tr>
+    
+</table><br>
+
+</body>

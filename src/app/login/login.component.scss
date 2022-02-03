@@ -1,0 +1,61 @@
+// *{
+// margin: 0;
+// padding: 0;
+// box-sizing: border-box;
+// }
+
+
+body {
+    color: white;
+    position:fixed; 
+    height:100%; 
+    width:100%;
+    background-color:rgb(78, 130, 146);
+    margin: 0%;
+ 
+}
+
+#loginUser{
+
+    position: fixed;
+    bottom: 50%;
+    left: 10%;
+    width: 300px;
+    text-align: center;
+
+}
+
+#loginAdmin{
+  position: fixed;
+  bottom: 50%;
+  right: 10%;
+  width: 300px;
+  text-align: center;
+  
+//   border: 1px solid #73AD21;
+
+}
+
+.vertical {
+    border-left: 2px solid black;
+    height: 200px;
+    position:absolute;
+    left: 50%;
+    top: 20%;
+}
+
+h1{
+    
+    color: rgb(240, 222, 227);
+}
+
+
+.error{
+    color: red;
+    position: relative;
+    
+}
+
+.unAuthorisedError{
+    color: red;
+}

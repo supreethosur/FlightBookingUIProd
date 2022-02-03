@@ -1,0 +1,58 @@
+body {
+    color: lavender;
+    font-family: serif;;
+    position:fixed; 
+    height:100%; 
+    width:100%;
+    background-color:rgb(53, 53, 50);
+    margin: 0%;
+    overflow-y: auto
+  }
+
+    .addFormbutton{
+        top:10%;
+    }
+
+    .addPassanger{
+        background-color: rgb(92, 72, 76);
+        text-align: center;
+    }
+
+    .summary{
+        // flex-direction: column;
+        padding: 20px;
+        margin: 10px;
+        background-color: cadetblue;
+        position: absolute;
+        text-align: center;
+        height: 80px;
+        width :68%;
+        top: 50%;
+        left: 15%;
+        
+        // display: flex;
+    
+    }
+
+    .finalAmount{
+        position: fixed;
+        right: 0px; bottom: 0px;
+        top: 60%;
+        right: 5%;
+        // width: 100px;
+        // height:40px;
+    }
+
+    .finalSubmitButton{
+        position: fixed;
+        background-color: green;
+        color: rgb(90, 55, 55);
+        right: 0px; bottom: 0px;
+        border-radius: 20px;
+        width: 15%;
+        height: 8%;
+    }
+
+    span{
+        color: grey;
+    }

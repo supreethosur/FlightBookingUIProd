@@ -1,0 +1,30 @@
+<body>
+    <form class="searchbar" [formGroup]="searchBarForm" (submit)="getFlightStatus(searchByPNRbar.value)">
+        <input  placeholder="Enter PNR or E-Mail" formControlName="searchByPNRbar" type="text" id="searchByPNRbar" #searchByPNRbar />
+        <button> Search Flights</button>
+    </form>
+    <span *ngIf="!dataAvailable" class="NodataAvailable">No Data Available<br/></span>
+    <table class="summary"  *ngIf="historyModel!=null && historyModel.length!=0" border="1"  >
+        <tr >
+            <th>S.No.</th>
+            <th>PNR.No</th>
+            <th>Ticket No</th>
+            <th>Passanger Name</th>
+            <th>Class</th>
+            <th>Status</th>
+        </tr>
+        <tr *ngFor="let history of historyModel;let i=index">
+            <td>{{i+1}}</td>
+            <td>{{history.pnrNo}}</td>
+            <td>{{history.ticketNo}}</td>
+            <td>{{history.passangeName}}</td>
+            <td>{{history.isBusinessClass}}</td>
+            
+            <td>{{history.status}}</td>
+
+        </tr>
+        
+    </table>
+
+</body>
+

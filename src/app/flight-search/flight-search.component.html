@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+
+
+<html>
+<body>
+<section class="HeaderSearch">
+    <div class="column" id="logo" >
+        <!-- <img src="./../../assets/Images/logo.jpg">  -->
+    </div>
+    <form class="column" [formGroup]="searchForm" id="searchFields"
+        (submit)="getFlights(tripType.value,fromLocation.value,toLocation.value,fromDate.value,returnDate.value)">
+        <div class="trip_Type">
+            <label for="tripType">Trip Type </label><br>
+            <select id="tripType" #tripType>
+                <option *ngFor="let trip of trip_Type" [value]="trip">
+                    {{trip}}
+                </option>
+            </select>
+        </div>
+        <div class="fromLocation">
+            <label for="fromLocation">From location </label><br>
+            <input type="text" id="fromLocation" #fromLocation  formControlName="fromLocation">
+        </div>
+        <div class="toLocation">
+            <label for="toLocation">To Location</label><br>
+            <input type="text" id="toLocation" #toLocation formControlName="toLocation">
+        </div>
+        <div class="fromDate">
+            <label for="fromDate">From Date </label><br>
+            <input type="date" id="fromDate" #fromDate formControlName="startDate">
+        </div>
+        <div>
+            <label for="toDate">To Date</label><br>
+            <input type="date" id="toDate" #returnDate formControlName="returnDate">
+        </div>
+        <div class="column" id="searchButton">
+            <button [disabled]="searchForm.invalid"  class="searchbtn">Search</button>
+        </div>
+    </form>
+
+</section>
+
+<section class="inbox">
+<button (click)="getInbox()"> Inbox </button>
+</section>
+<span class="nodataAvailable" *ngIf="!dataAvailable" >No Data Available<br/></span>
+<!-- <body> -->
+    <form (submit)="proceedforBooking()" [formGroup]="ListFlightsForm">
+    <!-- <form > -->
+        <div *ngFor="let flight of flightList" class="listingCard">
+            <div class="flightData" id="airline">
+                <span> Airline </span><br>
+                {{flight.airline}}
+            </div>
+            <div class="flightData" id="flightName">
+                <span> Flight </span><br>
+                {{flight.flightName}}
+            </div>
+            <div class="flightData" id="fromLocation">
+                <span> From </span><br>
+                {{flight.fromLocation}}
+            </div>
+            <div class="flightData" id="toLocation">
+                <span> To </span><br>
+                {{flight.toLocation}}
+            </div>
+            <div class="flightData" id="departureDate">
+                <span> Departure Date </span><br>
+                {{flight.departureDate}}
+            </div>
+            <div class="flightData" id="departureTime">
+                <span> Departure Time </span><br>
+                {{flight.departureTime}}
+            </div>
+            <div class="flightData" id="arrivalDate">
+                <span> Arrival Date </span><br>
+                {{flight.arrivalDate}}
+            </div>
+            <div class="flightData" id="arrivalTime">
+                <span> Arrival Time </span><br>
+                {{flight.arrivalTime}}
+            </div>
+            
+            <input type="radio" [value]="flight.journeyId" #journeyId  name = "journeyId"(change)= "change(journeyId.value,flight.departureDate)" >
+        </div>
+        <button  class="Proceed" *ngIf="flightList.length!=0" >Proceed</button>
+    </form>
+
+
+
+</body>
+
+
+</html>
